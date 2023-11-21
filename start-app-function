@@ -1,0 +1,28 @@
+#!/bin/bash
+
+clean() {
+  echo "going to clean directory..."
+  echo "function first argument $1"
+  echo "function second argument $2"
+  #  "program1 25 98 arg4"
+  echo "function all argument $*"
+  #  "program1" "25" "98" "arg4" -> as array
+  echo "function all argument $@"
+
+  local index=0
+
+  for arg in "$@"; do
+    echo "Index: ${index}. Argument: ${arg}"
+    ((index++))
+  done
+
+  echo "return value from function"
+
+  return 5
+}
+
+result=$(clean program1 25 98 arg3)
+echo "Clean function result: ${result}"
+
+clean program1 25 98 arg4
+echo "Clean function status: $?"
